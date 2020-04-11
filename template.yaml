@@ -22,7 +22,7 @@ Resources:
          Statement:
              - Effect: "Allow"
                Action:
-                 - "kinesis:*"
+                 - "kinesis:PutRecord"
                Resource:
                  - "*"
       CodeUri: s3://the-sar-bucket/eventGen/code.zip # modify this if running local and not going to SAR
