@@ -24,6 +24,8 @@ You can curl from the terminal. Use the endpoint URL found in the CloudFormation
 The example below generates 3 transactions
 curl -v https://your_API_ID.execute-api.eu-west-2.amazonaws.com/?create=3
 
+By default the lambda timeout is 3 minutes - if you wish to create more events, consider increasing this time and also removing the sleep code in the lambda.
+
 Alternatively you can use Postman to test this.
 
 To view these events you can tail your Kinesis logs using Lumigo for example.
