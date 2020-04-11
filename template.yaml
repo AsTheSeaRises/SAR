@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Generate simulated financial transaction events using curl->API-GW->Lambda->KinesisDS
+Parameters: 
+  KinesisStreamNameParameter: 
+    Type: String
+
+Resources:
+  functionCode:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Events:
+        ApiEvent:
+          Type: HttpApi
+      Environment:
+        Variables:
+          myDataStream: !Ref KinesisStreamNameParameter
+      Handler: code.lambda_handler
+      Runtime: python3.7
+      Policies: 
+       - Version: "2012-10-17"
+         Statement:
+             - Effect: "Allow"
+               Action:
+                 - "kinesis:*"
+               Resource:
+                 - "*"
+      CodeUri: s3://the-sar-bucket/eventGen/code.zip # modify this if running local and not going to SAR
+      Description: Lambda to generate events and send to Kinesis Data Stream
+      MemorySize: 128
+      Timeout: 180
+  
+  theKinesisStream:
+    Type: 'AWS::Kinesis::Stream'
+    Properties:
+      ShardCount: 1
+      Name: !Ref KinesisStreamNameParameter
+Outputs:
+  ServerlessHttpApi:
+    Description: API Endpoint
+    Value:
+      Fn::Sub: 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/'
