@@ -9,7 +9,11 @@ from time import sleep
 import os
 
 fake = Faker() # library to generate synthetic transaction info
-kinesis_client = boto3.client('kinesis', region_name='eu-west-2')
+
+client_reg = boto3.client('kinesis') # get region
+runRegion = client_reg.meta.region_name
+kinesis_client = boto3.client('kinesis', region_name=runRegion)
+
 
 def lambda_handler(event, context):
     print(event)
