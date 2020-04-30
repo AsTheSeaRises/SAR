@@ -38,8 +38,8 @@ A successful generation event response will show in Postman as "Event creation t
 To see event populating the Kinesis Stream in real-time you can use the Lumigo-cli
 
 1) Install open-source Lumigo cli tools
-	$npm install -g lumigo-cli
 
-2) $lumigo-cli tail-kinesis -n <your stream name> -r <your region>
+	`$npm install -g lumigo-cli`
 
-	
+2) `$lumigo-cli tail-kinesis -n <your stream name> -r <your region>`
+
