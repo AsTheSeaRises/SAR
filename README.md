@@ -22,7 +22,8 @@ You can tweak the shape and schema of the records in the lambda function if need
 ## Usage:
 You can curl from the terminal. Use the endpoint URL found in the CloudFormation Output tab for the key: ServerlessHttpApi
 The example below generates 3 transactions
-curl -v https://your_API_ID.execute-api.eu-west-2.amazonaws.com/?create=3
+
+`curl -v https://your_API_ID.execute-api.eu-west-2.amazonaws.com/?create=3`
 
 Alternatively you can use Postman to test this.
 
@@ -35,7 +36,10 @@ A successful generation event response will show in Postman as "Event creation t
 
 ![Image of Postman](https://github.com/AsTheSeaRises/SAR/blob/master/Postman.png)
 
-To see event populating the Kinesis Stream in real-time you can use the Lumigo-cli
+To see event populating the Kinesis Stream in real-time you can use the Lumigo-cli:
+
+https://lumigo.io/blog/introducing-the-lumigo-cli/
+https://www.npmjs.com/package/lumigo-cli#usage
 
 1) Install open-source Lumigo cli tools
 
