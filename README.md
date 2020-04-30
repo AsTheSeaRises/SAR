@@ -47,3 +47,6 @@ https://www.npmjs.com/package/lumigo-cli#usage
 
 2) `$lumigo-cli tail-kinesis -n <your stream name> -r <your region>`
 
+## Cost
+Please refer to the AWS calculator to determine monthly cost.
+https://calculator.aws
